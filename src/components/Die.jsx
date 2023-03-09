@@ -10,7 +10,7 @@ export default function Die(props) {
       onClick={() => props.holdDice(props.id, props.isHeld)}
       className="die"
     >
-      <h3>{props.value}</h3>
+      <img className="diceImage" src={props.imgUrl} />
     </div>
   );
 }

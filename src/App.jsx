@@ -2,17 +2,18 @@ import React from "react";
 import Die from "./components/Die";
 import Confetti from "react-confetti";
 export default function App() {
-  console.log("This belongs to branch ---New-Features---");
   // const { width, height } = useWindowSize();
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   function allNewDice() {
     const newDice = [];
     for (let i = 1; i <= 10; i++) {
+      const imageNumber = Math.ceil(Math.random() * 6);
       newDice.push({
         id: i,
-        value: Math.ceil(Math.random() * 6),
+        value: imageNumber,
         isHeld: false,
+        imgUrl: `./images/${imageNumber}.png`,
       });
     }
     return newDice;
@@ -24,16 +25,25 @@ export default function App() {
       id={el.id}
       value={el.value}
       isHeld={el.isHeld}
+      imgUrl={el.imgUrl}
     />
   ));
 
   function rollDice() {
     if (!tenzies) {
-      const holdRoll = dice.map((el) =>
-        el.isHeld
-          ? el
-          : { id: el.id, value: Math.ceil(Math.random() * 6), isHeld: false }
-      );
+      const holdRoll = dice.map((el) => {
+        if (el.isHeld) {
+          return el;
+        } else {
+          const imageNumber = Math.ceil(Math.random() * 6);
+          return {
+            id: el.id,
+            value: imageNumber,
+            isHeld: false,
+            imgUrl: `./images/${imageNumber}.png`,
+          };
+        }
+      });
       setDice(holdRoll);
     } else {
       setDice(allNewDice());
@@ -41,7 +51,7 @@ export default function App() {
     }
   }
 
-  function holdDice(id, isHeld) {
+  function holdDice(id) {
     // event.target.closest("div").classList.toggle("held");
     const changedDice = dice.map((el) =>
       el.id === id ? { ...el, isHeld: !el.isHeld } : el
@@ -53,7 +63,9 @@ export default function App() {
     function () {
       const heldCondition = dice.every((el) => el.isHeld);
       const nr = dice[0].value;
+      dice.forEach((die) => console.log(die.value));
       const nrCondition = dice.every((el) => el.value === nr);
+      console.log(nrCondition);
       if (heldCondition && nrCondition) setTenzies(true);
     },
     [dice]

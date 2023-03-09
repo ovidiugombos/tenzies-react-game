@@ -41,6 +41,10 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+.diceImage {
+  width: 48px;
+  height: 48px;
+}
 .held {
   background-color: #59e391;
   color: white;
