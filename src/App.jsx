@@ -2,6 +2,7 @@ import React from "react";
 import Die from "./components/Die";
 import Confetti from "react-confetti";
 export default function App() {
+  console.log("This belongs to branch ---New-Features---");
   // const { width, height } = useWindowSize();
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
