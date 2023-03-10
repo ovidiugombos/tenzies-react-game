@@ -10,9 +10,10 @@ body {
   font-family: "Inter", sans-serif;
 }
 .container {
+  padding: 0 20px;
   margin-top: 100px;
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 420px;
   background-color: #f5f5f5;
   border-radius: 10px;
   display: flex;
@@ -49,6 +50,18 @@ body {
   background-color: #59e391;
   color: white;
 }
+/* number of rolls */
+.nr-rolls {
+  margin-top: 10px;
+  margin-bottom: -12px;
+  /* font-size: 13px; */
+}
+.record-count {
+  margin-top: 15px;
+  color: red;
+  font-weight: bold;
+}
+
 /* ROOL BUTTON */
 .roll--btn {
   cursor: pointer;

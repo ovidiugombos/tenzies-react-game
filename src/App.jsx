@@ -5,6 +5,7 @@ export default function App() {
   // const { width, height } = useWindowSize();
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
+  const [rolls, setRolls] = React.useState({ nrRolls: 0, rollsRecord: 0 });
   function allNewDice() {
     const newDice = [];
     for (let i = 1; i <= 10; i++) {
@@ -30,6 +31,13 @@ export default function App() {
   ));
 
   function rollDice() {
+    setRolls(function (prevRolls) {
+      return {
+        ...prevRolls,
+        nrRolls: prevRolls.nrRolls + 1,
+      };
+    });
+
     if (!tenzies) {
       const holdRoll = dice.map((el) => {
         if (el.isHeld) {
@@ -58,15 +66,19 @@ export default function App() {
     );
     setDice(changedDice);
   }
-
+  // CHECK IF GAME IS WON /////////////////////////////
   React.useEffect(
     function () {
       const heldCondition = dice.every((el) => el.isHeld);
       const nr = dice[0].value;
-      dice.forEach((die) => console.log(die.value));
       const nrCondition = dice.every((el) => el.value === nr);
-      console.log(nrCondition);
-      if (heldCondition && nrCondition) setTenzies(true);
+      if (heldCondition && nrCondition) {
+        if (rolls.nrRolls < rolls.rollsRecord || rolls.rollsRecord === 0)
+          rolls.rollsRecord = rolls.nrRolls;
+        console.log(rolls.rollsRecord);
+        setTenzies(true);
+        setRolls((prevRolls) => ({ ...prevRolls, nrRolls: 0 }));
+      }
     },
     [dice]
   );
@@ -82,7 +94,10 @@ export default function App() {
               Press the <b>New Game</b> button to <br /> play another game!
             </span>
           ) : (
-            "Roll until all dice are the same. Click each die to freeze it at its current value between rolls."
+            <span>
+              Roll until all dice are the same. <br /> Click each die to freeze
+              it at its current <br /> value between rolls.
+            </span>
           )}
         </p>
       </div>
@@ -90,6 +105,15 @@ export default function App() {
       <button onClick={rollDice} className="roll--btn">
         {tenzies ? "New Game" : "Roll"}
       </button>
+      {rolls.nrRolls != 0 && (
+        <p className="nr-rolls">
+          Number of rolls: <b>{rolls.nrRolls}</b>
+        </p>
+      )}
+      <p className="record-count">
+        {rolls.rollsRecord != 0 && `Record: ${rolls.rollsRecord}`}
+      </p>
+      {/* <p>Timer</p> */}
     </main>
   );
 }
