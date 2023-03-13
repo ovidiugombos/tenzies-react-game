@@ -1,6 +1,8 @@
 
 Tenzies Game
+
 HI :)
+
 This is a React-based game application called Tenzies, created by Gombos Ovidiu. 
 Tenzies is a dice game where the player must roll a set of dice until they all show the same value.
 
@@ -14,6 +16,7 @@ Players can select and deselect dice to roll them again.
 The game is won when all the dice show the same value.
 
 Table of Contents
+
     Installation
     Usage
     Features
@@ -26,6 +29,7 @@ Installation
     Run npm install to install all dependencies.
     Run npm start to start the app in your local server.
 Usage
+
 The game is easy to use and can be played by anyone. 
 The main goal is to get all the dice to show the same value. 
 Here are the steps to play the game:
@@ -35,6 +39,7 @@ Here are the steps to play the game:
     Repeat steps 1 and 2 until all the dice show the same value.
     Once all dice show the same value, you win the game.
 Features
+
 Tenzies game has the following features:
 
     Real dice faces.
