@@ -1,11 +1,14 @@
 import React from "react";
 import Die from "./components/Die";
 import Confetti from "react-confetti";
+import Record from "./components/Record";
+
 export default function App() {
   // const { width, height } = useWindowSize();
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   const [rolls, setRolls] = React.useState({ nrRolls: 0, rollsRecord: 0 });
+
   function allNewDice() {
     const newDice = [];
     for (let i = 1; i <= 10; i++) {
@@ -75,7 +78,6 @@ export default function App() {
       if (heldCondition && nrCondition) {
         if (rolls.nrRolls < rolls.rollsRecord || rolls.rollsRecord === 0)
           rolls.rollsRecord = rolls.nrRolls;
-        console.log(rolls.rollsRecord);
         setTenzies(true);
         setRolls((prevRolls) => ({ ...prevRolls, nrRolls: 0 }));
       }
@@ -113,7 +115,7 @@ export default function App() {
       <p className="record-count">
         {rolls.rollsRecord != 0 && `Record: ${rolls.rollsRecord}`}
       </p>
-      {/* <p>Timer</p> */}
+      <Record startTime={tenzies} />
     </main>
   );
 }

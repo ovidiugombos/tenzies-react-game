@@ -58,7 +58,7 @@ body {
 }
 .record-count {
   margin-top: 15px;
-  color: red;
+  color: rgb(255, 70, 46);
   font-weight: bold;
 }
 
@@ -75,4 +75,12 @@ body {
   box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
   border-radius: 3.81277px;
   font-family: "Inter", sans-serif;
+}
+/* timer */
+.timer {
+  color: gray;
+  width: 100%;
+  text-align: end;
+  margin-bottom: -25px;
+  /* background-color: #0b2434; */
 }
