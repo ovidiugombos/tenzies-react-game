@@ -44,6 +44,7 @@ Tenzies game has the following features:
     The ability to select and deselect dice.
     
 Contributing
+
 This is a personal project made for learning purposes, but contributions are welcome. 
 If you'd like to contribute to this project, 
 feel free to submit a pull request or reach out to me via email gomboso@mail.com with your ideas.
