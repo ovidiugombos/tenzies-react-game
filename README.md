@@ -45,7 +45,7 @@ Tenzies game has the following features:
     Real dice faces.
     A timer to track the player's time.
     A roll counter to keep track of the number of rolls made.
-    A record of the player's best time and best number of rolls.
+    A record of the player's best number of rolls.
     The ability to select and deselect dice.
     
 Contributing
